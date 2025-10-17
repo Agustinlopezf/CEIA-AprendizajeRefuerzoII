@@ -1,0 +1,26 @@
+[project]
+name = "ceia-aprendizajerefuerzoii"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Agustin Lopez Fredes",email = "agustin.lopezfredes@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11, <3.13"
+dependencies = [
+    "torch (>=2.9.0,<3.0.0)",
+    "torchvision (>=0.24.0,<0.25.0)",
+    "torchaudio (>=2.9.0,<3.0.0)",
+    "numpy (>=2.3.4,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "torch"
+url = "https://download.pytorch.org/whl/cu126"
+priority = "supplemental"
+
