@@ -108,18 +108,33 @@ El algoritmo **SAC** resultó el más eficiente en entornos continuos como *Bipe
 
 ## Requisitos y Ejecución
 - **Python:** 3.12  
+
+- **Dependencias principales:**  
+  - `gymnasium[box2d]`: provee el entorno *BipedalWalker-v3* utilizado para el entrenamiento de los agentes.  
+  - `torch`, `stable-baselines3`, `numpy`, `matplotlib`, `seaborn`, `tensorboard`, `moviepy`, entre otras.  
+
+- **Nota sobre SWIG:**  
+  El entorno *BipedalWalker-v3* depende internamente de la librería `box2d-py`, la cual requiere la herramienta **SWIG** (*Simplified Wrapper and Interface Generator*) para compilar extensiones en C++.  
+  Aunque `swig` aparece como dependencia en el archivo `pyproject.toml`, **Poetry no instala la herramienta del sistema**, por lo que debe instalarse manualmente.  
+
+  - **Instalación en Windows:**  
+    1. Descargar el instalador desde [http://www.swig.org/download.html](http://www.swig.org/download.html).  
+    2. Extraer el contenido y agregar la ruta del ejecutable (`swig.exe`) a la variable de entorno **PATH**.  
+    3. Verificar la instalación con:  
+       ```bash
+       swig -version
+       ```
+
+  - **Instalación en Linux (ejemplo Ubuntu):**  
+    ```bash
+    sudo apt install swig
+    ```
+
+  Una vez instalada la herramienta, la instalación de dependencias con Poetry podrá completarse correctamente.
+
 - **Instalación con Poetry:**  
   ```bash
   poetry install
-  ```
-- **Ejecución:**  
-  Abrir y ejecutar el notebook `comparativa_algoritmos_bipedal.ipynb`.  
-- **Control de reentrenamiento:**  
-  Cambiar la variable `reentrenar = True` o `False` según necesidad.  
-- **Visualización de métricas:**  
-  ```bash
-  tensorboard --logdir ./ppo_tensorboard/
-  ```
 
 ---
 
